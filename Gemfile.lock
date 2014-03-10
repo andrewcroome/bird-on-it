@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     bird_on_it (0.0.1)
-      rails (~> 4.0.3)
+      rails (>= 4.0.0)
 
 GEM
   remote: https://rubygems.org/
