@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = BirdOnIt::VERSION
   s.authors     = ["Andrew Croome"]
   s.email       = ["andrew.croome@fastmail.fm"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of BirdOnIt."
-  s.description = "TODO: Description of BirdOnIt."
+  s.homepage    = "https://github.com/andrewcroome/bird-on-it"
+  s.summary     = "Provides simple decorators for Ruby on Rails."
+  s.description = "Put a BirdOnIt."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
