@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["andrewcroome@gmail.com"]
   s.homepage    = "https://github.com/andrewcroome/bird-on-it"
   s.summary     = "Provides simple decorators for Ruby on Rails."
-  s.description = "Model need decorating? Put a bird on it."
+  s.description = "Simple decorators for Ruby on Rails."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
