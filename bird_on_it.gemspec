@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = "bird_on_it"
   s.version     = BirdOnIt::VERSION
   s.authors     = ["Andrew Croome"]
-  s.email       = ["andrew.croome@fastmail.fm"]
+  s.email       = ["andrewcroome@gmail.com"]
   s.homepage    = "https://github.com/andrewcroome/bird-on-it"
   s.summary     = "Provides simple decorators for Ruby on Rails."
   s.description = "Model need decorating? Put a bird on it."
