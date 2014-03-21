@@ -11,8 +11,7 @@ module BirdOnIt
 
   module ClassMethods
     def decorate_collection(collection)
-      collection = collection.to_a
-      collection.map { |item| decorator_class.new(item) }
+      Array(collection).map { |item| decorator_class.new(item) }
     end
 
     def decorator_class
