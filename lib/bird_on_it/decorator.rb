@@ -3,6 +3,8 @@ module BirdOnIt
     extend ActiveSupport::Concern
 
     included do
+      extend ActiveModel::Naming
+
       attr_accessor :object
 
       def initialize(object)
