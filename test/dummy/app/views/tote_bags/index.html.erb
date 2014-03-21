@@ -1,0 +1,31 @@
+<h1>Listing tote_bags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Material</th>
+      <th>Straps</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tote_bags.each do |tote_bag| %>
+      <tr class="<%= tote_bag.css_classes %>">
+        <td><%= tote_bag.colour %></td>
+        <td><%= tote_bag.material %></td>
+        <td><%= tote_bag.straps %></td>
+        <td><%= link_to 'Show', tote_bag %></td>
+        <td><%= link_to 'Edit', edit_tote_bag_path(tote_bag.object) %></td>
+        <td><%= link_to 'Destroy', tote_bag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tote bag', new_tote_bag_path %>

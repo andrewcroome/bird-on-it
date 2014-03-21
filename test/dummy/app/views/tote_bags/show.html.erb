@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<div class="<%= @tote_bag.css_classes %>"
+
+  <p>
+    <%= @tote_bag.colour_description %>
+  </p>
+
+  <p>
+    <%= @tote_bag.material_description %>
+  </p>
+
+  <p>
+    <%= @tote_bag.straps_description %>
+  </p>
+
+</div>
+
+<%= link_to 'Edit', edit_tote_bag_path(@tote_bag.object) %> |
+<%= link_to 'Back', tote_bags_path %>
