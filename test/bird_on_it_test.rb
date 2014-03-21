@@ -1,56 +1,60 @@
 require 'test_helper'
 
 describe BirdOnIt do
-  class Decoratable
+  class ToteBag
     include BirdOnIt
 
-    def decoratable_instance_method
-      'hello from decoratable'
+    def color
+      'red'
     end
   end
 
-  class DecoratableDecorator
+  class ToteBagDecorator
     include BirdOnIt::Decorator
 
-    def decorator_method
-      'hello from decorator'
+    def color_description
+      if object.color
+        "This bag is #{color}"
+      else
+        "Unknown color"
+      end
     end
   end
 
-  let(:decoratable) { Decoratable.new }
-  let(:decorated)   { decoratable.decorate }
+  let(:tote_bag)           { ToteBag.new }
+  let(:tote_bag_decorator) { tote_bag.decorate }
 
-  describe "when included" do
-    it "adds a class method #decorator_class that returns the decorator class" do
-      Decoratable.decorator_class.must_equal DecoratableDecorator
-    end
-
+  describe "when BirdOnIt is included" do
     it "adds a method #decorate that returns a decorator" do
-      decoratable.decorate.class.must_equal DecoratableDecorator
+      tote_bag.decorate.class.must_equal ToteBagDecorator
     end
 
     it "adds a class method #decorate_collection that decorates a collection" do
-      collection = Decoratable.decorate_collection [Decoratable.new, Decoratable.new]
-      collection.map(&:class).must_equal [DecoratableDecorator, DecoratableDecorator]
+      collection = ToteBag.decorate_collection [ToteBag.new, ToteBag.new]
+      collection.map(&:class).must_equal [ToteBagDecorator, ToteBagDecorator]
+    end
+
+    it "adds a class method #decorator_class that returns the decorator class" do
+      ToteBag.decorator_class.must_equal ToteBagDecorator
     end
   end
 
-  describe DecoratableDecorator do
+  describe ToteBagDecorator do
     it "responds to its own instance methods" do
-      decorated.respond_to?(:decorator_method).must_equal true
-      decorated.decorator_method.must_equal 'hello from decorator'
-    end
-
-    it "responds to the methods of the decorated object" do
-      decorated.respond_to?(:decoratable_instance_method).must_equal true
+      tote_bag_decorator.respond_to?(:color_description).must_equal true
+      tote_bag_decorator.color_description.must_equal 'This bag is red'
     end
 
     it "sends missing methods to its decorated object" do
-      decorated.decoratable_instance_method.must_equal 'hello from decoratable'
+      tote_bag_decorator.color.must_equal 'red'
+    end
+
+    it "responds to the methods of the decorated object" do
+      tote_bag_decorator.respond_to?(:color).must_equal true
     end
 
     it "has an object attribute that is the decorated object" do
-      decorated.object.must_equal decoratable
+      tote_bag_decorator.object.must_equal tote_bag
     end
   end
 end
