@@ -170,7 +170,7 @@ Other features, such as linking to the show page, or using the object with `form
 <%= link_to 'Show', @post %>
 ```
 
-```ruby
+```erb
 <%= form_for(@post) do |f| %>
   <%= f.text_field :material %>
   <%= f.submit %>
