@@ -1,6 +1,6 @@
 # Bird On It: Simple decorators for your Rails models
 
-Model need decorating in your Rails view? Put a bird in it!
+Model need decorating in your Rails view? Put a bird on it!
 
 ## What is Bird On It?
 
@@ -164,7 +164,7 @@ Some Rails helpers, such as the edit_path helper, do not work well with decorate
 <%= link_to 'Edit', edit_post_path(@post.object) %>
 ```
 
-Other features, such as linking to the show page, or using the object with `form_for`, continue to work as usual.
+Other features, such as linking to the show page, or using the object with `form_for`, should continue to work as usual.
 
 ```ruby
 <%= link_to 'Show', @post %>
