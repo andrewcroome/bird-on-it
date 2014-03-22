@@ -1,8 +1,8 @@
-# _Bird On It_: Simple decorators for your Rails models
+# Bird On It: Simple decorators for your Rails models
 
-Model need decorating in your Rails view? Put a _Bird On It_!
+Model need decorating in your Rails view? Put a bird in it!
 
-## What is _Bird On It_?
+## What is Bird On It?
 
 _Bird On It_ is a simple way to decorate models in your Rails application.
 
@@ -151,7 +151,7 @@ end
 
 Use your decorated objects in the view as usual.
 
-```html
+```erb
 <div class="post">
   <h1><%= @post.display_title %></h2>
   <p><%= @post.body %></p>
