@@ -1,16 +1,14 @@
-# Bird On It: Simple decorators for your Rails models
+# _Bird On It_: Simple decorators for your Rails models
 
-Model need decorating in your Rails view? Put a bird on it!
+Model need decorating in your Rails view? Put a _Bird On It_!
 
-## What is Bird On It?
+## What is _Bird On It_?
 
 _Bird On It_ is a simple way to decorate models in your Rails application.
 
 Decorators allow you to move view- and presentation-related logic out of your active record models and view helpers and into decorator classes. Doing this cleans up your view code and reduces the number of responsibilities your active record objects have.
 
-Here's how it works:
-
-Let's say you have a ToteBag model, with colour, size and straps attributes. In your view, you want to display a description about whether or not the bag has straps. You also want to add some css classes, depending on what properties the bag has. You put the first of these methods on the model, and the second in a helper, like so:
+Here's how it works. Let's say you have a ToteBag model, with colour, size and straps attributes. In your view, you want to describe whether or not the bag has straps. You also want to add some css classes, depending on what properties the bag has. You put the first of these methods on the model, and the second in a helper, like so:
 
 ```ruby
 # app/models/tote_bag.rb
@@ -36,28 +34,28 @@ module ToteBagHelper
 end
 ```
 
-In your view:
+In your view, you would use both the helper and model:
 
-```html
-<div class=<%= tote_bag_css_classes(@tote_bag) %>>
+```erb
+<div class="<%= tote_bag_css_classes(@tote_bag) %>">
   <h2>Straps:</h2>
   <p><%= @tote_bag.straps_description %></p>
 </div>
 ```
 
-Instead of the above, however, using a tote bag decorator allows both these methods to exist in the one place. The decorator sends any method that it doesn't itself respond to to the decorated object. Using Bird On It:
+Instead of the above, however, using a tote bag decorator allows both these methods to exist in the one place. The decorator sends any method that it doesn't itself respond to the decorated object. Using _Bird On It_:
 
 ```ruby
 # app/models/tote_bag.rb
 class ToteBag < ActiveRecord::Base
-  includes BirdOnIt
+  include BirdOnIt
 end
 ```
 
 ```ruby
 # app/decorators/tote_bag_decorator.rb
 class ToteBagDecorator
-  includes BirdOnIt::Decorator
+  include BirdOnIt::Decorator
 
   def straps_description
     if object.straps?
@@ -77,8 +75,8 @@ end
 
 In your view:
 
-```html
-<div class=<%= @tote_bag.css_classes %>>
+```erb
+<div class="<%= @tote_bag.css_classes %>">
   <h2>Straps:</h2>
   <p><%= @tote_bag.straps_description %></p>
 </div>
@@ -88,7 +86,7 @@ Now your view-related code can reside in the decorator, eliminating the need for
 
 ## Installation
 
-Add Bird on It to your Gemfile
+Add _Bird On It_ to your Gemfile
 
 ```ruby
   gem 'bird_on_it'
@@ -100,12 +98,12 @@ Run `bundle install`.
 
 ### Model
 
-To decorate a model, first include Bird On it:
+To decorate a model, first include _Bird On It_:
 
 ```ruby
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  includes BirdOnIt
+  include BirdOnIt
 end
 ```
 
@@ -114,7 +112,7 @@ Then create a decorator either in `app/views/decorators` or `app/models` with th
 ```ruby
 # app/decorators/post_decorator.rb
 class PostDecorator < ActiveRecord::Base
-  includes BirdOnIt::Decorator
+  include BirdOnIt::Decorator
 
   def display_title
     object.title.humanize
@@ -132,7 +130,7 @@ end
 
 ### Controller
 
-Bird on It adds a `decorate` method you can call on your objects in your controller before they are passed to the view.
+_Bird On It_ adds a `decorate` method you can call on your objects in your controller before they are passed to the view.
 
 ```ruby
 # app/controllers/posts_controller.rb
@@ -160,7 +158,7 @@ Use your decorated objects in the view as usual.
 </div>
 ```
 
-Some Rails helpers, such as the edit_path helper, do not work well with decorated objects. If you encounter one of these, you can work around this by passing the helper the decorated object, instead of the decorator.
+Some Rails helpers, such as the edit_path helper, do not work well with decorated objects. If you encounter one of these, you can work around this by passing the helper the decorated object, instead of the decorator. For example:
 
 ```ruby
 <%= link_to 'Edit', edit_post_path(@post.object) %>
