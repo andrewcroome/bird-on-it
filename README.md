@@ -1,6 +1,6 @@
 # Bird On It: Simple decorators for your Rails models
 
-Model need decorating in your Rails view? Put a bird on it!
+Model need decorating in your Rails view? [Put a bird on it!](http://www.youtube.com/watch?v=iHmLljk2t8M)
 
 ## What is Bird On It?
 
